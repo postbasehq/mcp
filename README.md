@@ -1,15 +1,25 @@
 # @postbasehq/mcp
 
+[![npm version](https://img.shields.io/npm/v/@postbasehq/mcp?color=3B5BDB)](https://www.npmjs.com/package/@postbasehq/mcp)
+[![npm downloads](https://img.shields.io/npm/dm/@postbasehq/mcp?color=3B5BDB)](https://www.npmjs.com/package/@postbasehq/mcp)
+[![license](https://img.shields.io/npm/l/@postbasehq/mcp?color=3B5BDB)](./LICENSE)
+[![Node](https://img.shields.io/node/v/@postbasehq/mcp?color=3B5BDB)](https://nodejs.org)
+
 The **Model Context Protocol** server for [Postbase](https://postbase.so) — the
 open-source, MCP-native social scheduler. Add it to Claude, Cursor, or any MCP client
 and let your AI agent schedule and publish across your channels.
 
 > Post everywhere. Even from your AI.
 
-## Setup
+## Quick start
 
 1. Generate an API key in your Postbase dashboard → **MCP & API**.
-2. Add the server to your MCP client config:
+2. Add the server to your MCP client config (see examples below).
+3. Ask your agent: _“Schedule this thread for 9am to X and LinkedIn.”_
+
+## Example configs
+
+**Any MCP client** — the minimal config:
 
 ```json
 {
@@ -17,13 +27,49 @@ and let your AI agent schedule and publish across your channels.
     "postbase": {
       "command": "npx",
       "args": ["@postbasehq/mcp"],
-      "env": { "POSTBASE_API_KEY": "pb_live_…" }
+      "env": { "POSTBASE_API_KEY": "pb_live_your_key_here" }
     }
   }
 }
 ```
 
-3. Ask your agent: _“Schedule this thread for 9am to X and LinkedIn.”_
+**Claude Desktop** — add the same block to your config file:
+
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
+Then restart Claude Desktop.
+
+**Cursor** — add it to `~/.cursor/mcp.json` (or Settings → MCP):
+
+```json
+{
+  "mcpServers": {
+    "postbase": {
+      "command": "npx",
+      "args": ["@postbasehq/mcp"],
+      "env": { "POSTBASE_API_KEY": "pb_live_your_key_here" }
+    }
+  }
+}
+```
+
+**Local development** — point at a Postbase instance running on your machine:
+
+```json
+{
+  "mcpServers": {
+    "postbase": {
+      "command": "npx",
+      "args": ["@postbasehq/mcp"],
+      "env": {
+        "POSTBASE_API_KEY": "pb_live_your_key_here",
+        "POSTBASE_API_URL": "http://localhost:3000/api/v1"
+      }
+    }
+  }
+}
+```
 
 ## Tools
 
