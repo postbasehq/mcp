@@ -1,5 +1,6 @@
 # @postbasehq/mcp
 
+[![CI](https://github.com/postbasehq/mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/postbasehq/mcp/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@postbasehq/mcp?color=3B5BDB)](https://www.npmjs.com/package/@postbasehq/mcp)
 [![npm downloads](https://img.shields.io/npm/dm/@postbasehq/mcp?color=3B5BDB)](https://www.npmjs.com/package/@postbasehq/mcp)
 [![license](https://img.shields.io/npm/l/@postbasehq/mcp?color=3B5BDB)](./LICENSE)
