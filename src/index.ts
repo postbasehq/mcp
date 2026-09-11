@@ -92,6 +92,32 @@ server.tool(
 );
 
 server.tool(
+  "schedule_thread",
+  "Create an X thread (multiple tweets, in order) and optionally schedule it. The first tweet is the post; the rest reply in a chain.",
+  {
+    tweets: z.array(z.string()).min(1).describe("The tweets, in order. First is the lead tweet."),
+    channel_ids: z
+      .array(z.string())
+      .optional()
+      .describe("Channel ids to publish to (from list_channels)."),
+    scheduled_at: z
+      .string()
+      .optional()
+      .describe("ISO 8601 time to publish, e.g. 2026-09-12T09:00:00Z. Omit for a draft."),
+  },
+  async (args) =>
+    ok(
+      (
+        await api("POST", "/posts", {
+          thread: args.tweets,
+          channel_ids: args.channel_ids ?? [],
+          scheduled_at: args.scheduled_at ?? null,
+        })
+      ).post,
+    ),
+);
+
+server.tool(
   "list_scheduled",
   "List posts that are scheduled to publish.",
   {},
