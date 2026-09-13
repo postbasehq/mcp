@@ -78,6 +78,7 @@ Then restart Claude Desktop.
 |---|---|
 | `list_channels` | List the channels connected to your workspace. |
 | `create_post` | Create a post — `body`, `channel_ids`, optional ISO `scheduled_at` (omit for a draft). |
+| `schedule_thread` | Create an X thread (`tweets` in order) and optionally schedule it. |
 | `list_scheduled` | List posts scheduled to publish. |
 | `cancel_post` | Cancel a scheduled post by id. |
 
@@ -86,7 +87,7 @@ Then restart Claude Desktop.
 | Variable | Required | Default |
 |---|---|---|
 | `POSTBASE_API_KEY` | yes | — |
-| `POSTBASE_API_URL` | no | `https://postbase.so/api/v1` |
+| `POSTBASE_API_URL` | no | `https://www.postbase.so/api/v1` |
 
 For local development against a Postbase instance on your machine, set
 `POSTBASE_API_URL=http://localhost:3000/api/v1`.

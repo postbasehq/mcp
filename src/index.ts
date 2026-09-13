@@ -7,15 +7,15 @@
  *   { "command": "npx", "args": ["@postbasehq/mcp"],
  *     "env": { "POSTBASE_API_KEY": "pb_live_…" } }
  *
- * Optional env: POSTBASE_API_URL (default https://postbase.so/api/v1) — set to
- * http://localhost:3000/api/v1 for local development.
+ * Optional env: POSTBASE_API_URL (default https://www.postbase.so/api/v1) — set
+ * to http://localhost:3000/api/v1 for local development.
  */
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
 const API_KEY = process.env.POSTBASE_API_KEY;
-const BASE_URL = process.env.POSTBASE_API_URL ?? "https://postbase.so/api/v1";
+const BASE_URL = process.env.POSTBASE_API_URL ?? "https://www.postbase.so/api/v1";
 
 if (!API_KEY) {
   console.error(
