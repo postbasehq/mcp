@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.postbasehq/postbase",
+  "title": "Postbase",
+  "description": "Schedule social posts and threads to X, LinkedIn, Bluesky and Mastodon from your AI.",
+  "websiteUrl": "https://www.postbase.so/developers",
+  "repository": {
+    "url": "https://github.com/postbasehq/mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@postbasehq/mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "POSTBASE_API_KEY",
+          "description": "API key from Postbase → Developers",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "POSTBASE_API_URL",
+          "description": "API base URL, for self-hosted instances (default https://www.postbase.so/api/v1)",
+          "isRequired": false
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.postbase.so/mcp"
+    }
+  ]
+}

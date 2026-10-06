@@ -6,17 +6,28 @@
 [![license](https://img.shields.io/npm/l/@postbasehq/mcp?color=3B5BDB)](./LICENSE)
 [![Node](https://img.shields.io/node/v/@postbasehq/mcp?color=3B5BDB)](https://nodejs.org)
 
-The **Model Context Protocol** server for [Postbase](https://postbase.so) — the
-open-source, MCP-native social scheduler. Add it to Claude, Cursor, or any MCP client
-and let your AI agent schedule and publish across your channels.
+The **Model Context Protocol** server for [Postbase](https://www.postbase.so), the
+open-source social media scheduler. Add it to Claude, Cursor or any MCP client and
+let your AI agent draft and schedule posts and threads to **X, LinkedIn, Bluesky
+and Mastodon**. (TikTok and YouTube need a video, so schedule those in the app.)
 
 > Post everywhere. Even from your AI.
 
+## Hosted server (no API key)
+
+Postbase also runs this server for you at `https://mcp.postbase.so/mcp`, with
+OAuth sign-in instead of an API key. Add that URL as a custom connector in Claude
+or ChatGPT, or as a remote MCP server in Cursor, VS Code, Windsurf, Claude Code or
+Gemini CLI. The [MCP config generator](https://www.postbase.so/tools/mcp-config)
+prints the exact setup for each one.
+
+Use this npm package when you want an API key instead, or a self-hosted Postbase.
+
 ## Quick start
 
-1. Generate an API key in your Postbase dashboard → **MCP & API**.
+1. Create an API key in your Postbase dashboard under **Developers**.
 2. Add the server to your MCP client config (see examples below).
-3. Ask your agent: _“Schedule this thread for 9am to X and LinkedIn.”_
+3. Ask your agent: _"Schedule this thread for 9am to X and Bluesky."_
 
 ## Example configs
 
