@@ -56,7 +56,7 @@ function ok(data: unknown) {
   return { content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }] };
 }
 
-const server = new McpServer({ name: "postbase", version: "0.1.1" });
+const server = new McpServer({ name: "postbase", version: "0.2.0" });
 
 server.tool(
   "list_channels",
@@ -67,9 +67,19 @@ server.tool(
 
 server.tool(
   "create_post",
-  "Create a post. Provide channel_ids from list_channels and an ISO 8601 scheduled_at to schedule it (omit to save as a draft).",
+  "Create a post. Provide channel_ids from list_channels and an ISO 8601 scheduled_at to schedule it (omit to save as a draft). Attach images or a video with media_ids from list_media; YouTube needs a video and youtube.made_for_kids. TikTok posts can only be saved as drafts (the user schedules them in Postbase).",
   {
-    body: z.string().describe("The post text."),
+    body: z.string().optional().describe("The post text."),
+    media_ids: z.array(z.string()).optional().describe("Media library ids from list_media, in order."),
+    youtube: z
+      .object({
+        title: z.string().optional().describe("Video title, up to 100 characters."),
+        privacy: z.enum(["public", "unlisted", "private"]).optional(),
+        made_for_kids: z.boolean().optional().describe("Required to schedule to YouTube; ask the user."),
+      })
+      .optional()
+      .describe("YouTube details, when a YouTube channel is in channel_ids."),
+
     channel_ids: z
       .array(z.string())
       .optional()
@@ -83,9 +93,11 @@ server.tool(
     ok(
       (
         await api("POST", "/posts", {
-          body: args.body,
+          body: args.body ?? "",
           channel_ids: args.channel_ids ?? [],
           scheduled_at: args.scheduled_at ?? null,
+          media_ids: args.media_ids ?? [],
+          youtube: args.youtube,
         })
       ).post,
     ),
@@ -115,6 +127,22 @@ server.tool(
         })
       ).post,
     ),
+);
+
+server.tool(
+  "list_media",
+  "List images and videos in the workspace's Postbase media library (newest 50). Pass their ids to create_post as media_ids.",
+  {
+    type: z.enum(["image", "video"]).optional().describe("Only images or only videos."),
+    search: z.string().optional().describe("Match part of the file name."),
+  },
+  async (args) => {
+    const q = new URLSearchParams();
+    if (args.type) q.set("type", args.type);
+    if (args.search) q.set("search", args.search);
+    const qs = q.toString();
+    return ok((await api("GET", `/media${qs ? `?${qs}` : ""}`)).media);
+  },
 );
 
 server.tool(

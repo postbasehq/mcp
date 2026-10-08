@@ -88,7 +88,8 @@ Then restart Claude Desktop.
 | Tool | What it does |
 |---|---|
 | `list_channels` | List the channels connected to your workspace. |
-| `create_post` | Create a post — `body`, `channel_ids`, optional ISO `scheduled_at` (omit for a draft). |
+| `create_post` | Create a post — `body`, `channel_ids`, optional ISO `scheduled_at` (omit for a draft), `media_ids` from `list_media`, and `youtube` details (`title`, `privacy`, `made_for_kids`). TikTok posts can only be drafts. |
+| `list_media` | List images and videos in your Postbase media library, to attach by id. |
 | `schedule_thread` | Create an X thread (`tweets` in order) and optionally schedule it. |
 | `list_scheduled` | List posts scheduled to publish. |
 | `cancel_post` | Cancel a scheduled post by id. |
