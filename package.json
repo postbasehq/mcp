@@ -1,8 +1,8 @@
 {
   "name": "@postbasehq/mcp",
   "mcpName": "io.github.postbasehq/postbase",
-  "version": "0.2.0",
-  "description": "MCP server for Postbase, the open-source social media scheduler: let Claude, Cursor or any MCP client schedule posts, threads, images and video to X, LinkedIn, Bluesky, Mastodon and YouTube.",
+  "version": "0.3.0",
+  "description": "MCP server for Postbase, the open-source social media scheduler: let Claude, Cursor or any MCP client schedule, edit, check and retry posts, threads, images and video on X, LinkedIn, Bluesky, Mastodon and YouTube, and read their analytics.",
   "type": "module",
   "bin": {
     "postbase-mcp": "dist/index.js"

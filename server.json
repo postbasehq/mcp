@@ -8,19 +8,19 @@
     "url": "https://github.com/postbasehq/mcp",
     "source": "github"
   },
-  "version": "0.2.0",
+  "version": "0.3.0",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@postbasehq/mcp",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
           "name": "POSTBASE_API_KEY",
-          "description": "API key from Postbase → Developers",
+          "description": "API key from Postbase \u2192 Developers",
           "isRequired": true,
           "isSecret": true
         },

@@ -88,11 +88,16 @@ Then restart Claude Desktop.
 | Tool | What it does |
 |---|---|
 | `list_channels` | List the channels connected to your workspace. |
-| `create_post` | Create a post — `body`, `channel_ids`, optional ISO `scheduled_at` (omit for a draft), `media_ids` from `list_media`, and `youtube` details (`title`, `privacy`, `made_for_kids`). TikTok posts can only be drafts. |
+| `create_post` | Create a draft, or schedule a post or `thread`: `channel_ids`, `scheduled_at` (ISO 8601 with an offset) or `schedule_in_minutes`, `channel_bodies` for per-channel text, `media_ids` or `media_urls`, `youtube` details, and an `idempotency_key` so retries can't post twice. TikTok posts can only be drafts. |
+| `get_post` | How a post went on each channel: status, live URL, error, retry time and latest metrics. |
+| `update_post` | Edit or reschedule a draft or scheduled post; only the fields you pass change. |
+| `retry_post` | Send a post again to the channels where it failed. |
+| `get_analytics` | Impressions, likes, comments, shares and saves per post and channel, with totals. |
 | `list_media` | List images and videos in your Postbase media library, to attach by id. |
-| `schedule_thread` | Create an X thread (`tweets` in order) and optionally schedule it. |
-| `list_scheduled` | List posts scheduled to publish. |
-| `cancel_post` | Cancel a scheduled post by id. |
+| `add_media` | Add an image or video to the media library from a public https link. |
+| `list_scheduled` | List scheduled posts, or drafts, published or failed ones with `status`. |
+| `cancel_post` | Cancel a scheduled post by id (it goes back to a draft). |
+| `schedule_thread` | Create a thread (`tweets` in order). Kept for older setups; `create_post` with `thread` does the same. |
 
 ## Environment
 
